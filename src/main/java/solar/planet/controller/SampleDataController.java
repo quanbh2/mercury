@@ -4,22 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solar.planet.common.message.Text;
-import solar.planet.service.UserService;
+import solar.planet.service.InitDataService;
 
 @RestController
-@RequestMapping("/api/users")
-public class UserController extends BaseController {
+@RequestMapping("/api/initdata")
+public class SampleDataController extends BaseController {
 
     @Autowired
-    private UserService userService;
+    InitDataService initDataService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> getRole(@PathVariable int id) {
+    @GetMapping("")
+    public ResponseEntity<Object> getRole() {
 
-        return getResponse(Text.OK, HttpStatus.OK, userService.findById(id));
+        return getResponse(Text.OK, HttpStatus.OK, initDataService.sampleData());
     }
 }

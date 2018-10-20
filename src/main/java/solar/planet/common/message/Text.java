@@ -7,4 +7,9 @@ public class Text {
 
     public static final String OK = "OK";
     public static final String VERIFIED = "VERIFIED";
+
+    public static final String UN_VERIFIED = "UNVERIFIED token Google";
+    public static final String NULL_TOKEN = " Token Google is null";
+
+    public static final String ROLE = "ROLE ";
 }

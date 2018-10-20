@@ -7,10 +7,12 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import solar.planet.common.message.Text;
 import solar.planet.entity.Resource;
 import solar.planet.entity.Role;
 import solar.planet.entity.User;
 import solar.planet.entity.UserRole;
+import solar.planet.exception.BadRequestEx;
 import solar.planet.security.JwtTokenProvider;
 import solar.planet.service.*;
 
@@ -56,11 +58,10 @@ public class GoogleAuthenImpl implements AuthenService {
         try {
             idToken = verifier.verify(token);
         } catch (Exception ex) {
-            log.error(" {} ", ex.getMessage());
-            throw new NullPointerException("");
+            throw new BadRequestEx(Text.UN_VERIFIED);
         }
         if (idToken == null) {
-            throw new NullPointerException("");
+            throw new BadRequestEx(Text.NULL_TOKEN);
         }
 
         // parse data from token
@@ -68,7 +69,7 @@ public class GoogleAuthenImpl implements AuthenService {
         String email = payload.getEmail();
         String picture = (String) payload.get("picture");
         checkHustEmail(email);
-        String userName = email.replaceAll("@gmail.com|@hust.edu.vn", "");
+        String userName = email.replaceAll("@gmail.com|@topica.edu.vn", "");
         User user = userService.findByEmail(email);
         if (user != null) {
             return getData(user);

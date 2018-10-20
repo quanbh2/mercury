@@ -6,12 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import solar.planet.entity.User;
+import solar.planet.entity.Privilege;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecificationExecutor<User>,
-        PagingAndSortingRepository<User, Integer> {
+public interface PrivilegeRepository extends JpaRepository<Privilege, Integer>, JpaSpecificationExecutor<Privilege>,
+        PagingAndSortingRepository<Privilege, Integer> {
 
-    @Query("SELECT u from User u where u.email= :email")
-    User findByEmail(@Param("email") String email);
+    @Query("SELECT r from Privilege r where r.name= :name")
+    Privilege findByName(@Param("name") String name);
 }

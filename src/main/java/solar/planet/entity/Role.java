@@ -35,4 +35,9 @@ public class Role {
 
     private Boolean softDelete = false;
 
+    public String toString(){
+
+        return this.name+" | "+this.id;
+    }
+
 }

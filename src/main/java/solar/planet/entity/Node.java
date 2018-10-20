@@ -23,11 +23,7 @@ public class Node {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Float temp;
-    private Float ph;
-    private Float oxy;
-    private Float sali;
-    private Float sulfi;
+    private String codeNode;
 
     @ManyToOne
     @JsonBackReference
@@ -37,7 +33,7 @@ public class Node {
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT+07:00")
     private Date createdAt;
 
-    private Boolean isSafe;
+    private Boolean isActive;
 
     private Boolean softDelete = false;
 

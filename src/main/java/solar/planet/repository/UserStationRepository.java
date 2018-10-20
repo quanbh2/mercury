@@ -4,9 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import solar.planet.entity.UserRole;
+import solar.planet.entity.UserStation;
 
 @Repository
-public interface UserRoleRepository extends JpaRepository<UserRole, Integer>, JpaSpecificationExecutor<UserRole>,
-        PagingAndSortingRepository<UserRole, Integer> {
+public interface UserStationRepository extends JpaRepository<UserStation, Integer>, JpaSpecificationExecutor<UserStation>,
+        PagingAndSortingRepository<UserStation, Integer> {
 }

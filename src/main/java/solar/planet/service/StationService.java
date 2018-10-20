@@ -1,4 +1,10 @@
 package solar.planet.service;
 
-public class StationService {
+import solar.planet.entity.Station;
+
+public interface StationService {
+
+    Station save(Station station);
+
+    Station findById(Integer id);
 }

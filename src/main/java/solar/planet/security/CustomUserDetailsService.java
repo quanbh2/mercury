@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import solar.planet.entity.User;
 import solar.planet.service.UserService;
 
@@ -29,6 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         return null;
     }
 
+    @Transactional // this annotation is necessary
     public UserDetails loadUserById(Integer id) {
 
         User user = userService.findById(id);
@@ -45,7 +47,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         List<GrantedAuthority> authorities =
                 listPrivilege.stream().map(privilege -> new SimpleGrantedAuthority(privilege))
                         .collect(Collectors.toList());
-        log.info(" Authorities : {}",authorities);
+        log.info(" Authorities : {}", authorities);
         UserPrincipal userPrincipal = new UserPrincipal(user.getId(), user.getEmail(), authorities);
 
         return userPrincipal;

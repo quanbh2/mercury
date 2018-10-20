@@ -19,11 +19,6 @@ public class UserPrincipal implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
     public UserPrincipal(Integer id, String email, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.email = email;

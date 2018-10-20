@@ -30,4 +30,5 @@ public class UserRole {
     private Resource resource;
 
     private Boolean softDelete = false;
+
 }

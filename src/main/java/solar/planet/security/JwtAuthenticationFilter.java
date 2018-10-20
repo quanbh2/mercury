@@ -1,7 +1,10 @@
 package solar.planet.security;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.access.prepost.PreFilter;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
